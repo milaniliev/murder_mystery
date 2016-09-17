@@ -1,0 +1,65 @@
+<!doctype html>
+
+<html>
+  <head>
+    <style>
+      img {
+        position: relative;
+        display: block
+      }
+    </style>
+  </head>
+
+  <body>
+    <img id="corvette" src="corvette.jpg" width=200/>
+    <img id="lambo" src="lambo.jpg" width=200/>
+    <img id="porsche" src="porsche.jpg" width=200/>
+
+    <script>
+      "use strict"
+
+      class Car {
+        constructor (properties){
+          Object.keys(properties).forEach(function(prop){ this[prop] = properties[prop] }.bind(this))
+        }
+
+        move(){
+          this.position = this.position + ( this.speed * update_rate )  
+          this.picture.style.left = this.position + "px"
+        }
+
+        faster_than (other_car){
+            return this.speed > other_car.speed
+        }
+      }
+
+      var cars = [
+        new Car({
+          picture: document.getElementById("corvette"),
+          speed: 50,
+          position: 100
+        }), 
+        new Car({
+          picture: document.getElementById("lambo"),
+          speed: 70,
+          position: 0
+        }),
+        new Car({
+          picture: document.getElementById("porsche"),
+          speed: 200,
+          position: 0
+        })
+      ]
+
+      var update_rate = 1 / 30
+
+      setInterval(function(){
+        cars.forEach(function(car){
+          car.move()
+        })
+      }, 1000 * update_rate)
+
+      alert("Is porsche 918 faster than 'vette: " + cars[2].faster_than(cars[1]))
+    </script>
+  </body>
+</html>

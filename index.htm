@@ -1,0 +1,60 @@
+<!doctype html>
+
+<html>
+  <head>
+    <style>
+      body { 
+        background-color: #000; 
+        color: #ccc;
+        font-family: 'Courier', 'Courier New', serif
+      }
+      img {
+        width: 20%;
+      }
+      img:hover {
+        background-color: rgba(0,0,0,0.3)
+      }
+      img:active {
+        background-color: rgba(0,0,0,0.5)
+      }
+      #suspects { 
+        text-align: center;
+        background-image: url(ballroom.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
+    </head>
+    <body>
+      <h3>Witness Statements:</h3>
+      <p>The murderer wore a dress</p>
+      <p>The murderer had blond hair</p>
+      <h3>Who is the murderer?</h3>
+      <div id="suspects">
+        <img id="betty" src="betty.png"/>
+        <img id="jo"    src="josephine.png"/>
+        <img id="guy"   src="guy.png"/>
+        <img id="jerry" src="jerry.png"/>
+      </div>
+      <script>
+        var murderer_number = Math.random()
+        var murderer
+        if(murderer_number < 0.25){
+          murderer = 'Betty'
+        }
+        if(murderer_number >= 0.25 && murderer_number < 0.50){
+          murderer = 'Jo'
+        }
+        if(murderer_number >= 0.50 && murderer_number < 0.75) {
+          murderer = 'Guy'
+        }
+        if(murderer_number >= 0.75) {
+          murderer = 'Guy'
+        }
+        var jo = document.getElementById('jo')
+        setInterval(function(){
+          jo.height = jo.clientHeight - 1
+        }, 500)
+      </script>
+    </body>
+</html>
